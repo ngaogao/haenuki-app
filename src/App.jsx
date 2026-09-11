@@ -546,9 +546,13 @@ export default function HaenukiPrototype() {
   useEffect(() => {
     if (!loadedFromSave) return;
     if (prevStageRef.current !== null && prevStageRef.current !== stageKey) {
+      const content =
+        stageKey === "bloom"
+          ? "おや…？ハエヌキが開花したようだ…\n（これが、今のハエヌキの最後の姿らしい…）"
+          : `おや…？ハエヌキが${stageInfo.label}に生長したようだ…`;
       setMessages((prev) => [
         ...prev,
-        { role: "event", content: `おや…？ハエヌキが${stageInfo.label}に生長したようだ…` },
+        { role: "event", content: content },
       ]);
     }
     prevStageRef.current = stageKey;
